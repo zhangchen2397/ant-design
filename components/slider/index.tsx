@@ -7,7 +7,12 @@ export interface SliderProps {
   range?: boolean;
   min?: number;
   max?: number;
-  marks?: Object;
+  marks?: {
+    [key: number]: React.ReactNode | {
+      style: React.CSSProperties,
+      label: React.ReactNode,
+    }
+  };
   dots?: boolean;
   included?: boolean;
   disabled?: boolean;

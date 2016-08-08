@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 export interface SwitchProps {
   prefixCls?: string;
-  size?: string;
+  size?: 'small' | 'default';
   className?: string;
   checked?: boolean;
   defaultChecked?: boolean;

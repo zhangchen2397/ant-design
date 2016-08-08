@@ -6,7 +6,7 @@ import classNames from 'classnames';
 export interface SelectProps {
   prefixCls?: string;
   className?: string;
-  size?: string;
+  size?: 'default' | 'large' | 'small';
   combobox?: boolean;
   notFoundContent?: any;
   showSearch?: boolean;
@@ -23,6 +23,12 @@ export interface SelectProps {
   disabled?: boolean;
   defaultActiveFirstOption?: boolean;
   labelInValue?: boolean;
+}
+
+export interface SelectContext {
+  antLocale?: {
+    Select?: any,
+  };
 }
 
 export default class Select extends React.Component<SelectProps, any> {
@@ -48,9 +54,7 @@ export default class Select extends React.Component<SelectProps, any> {
     choiceTransitionName: PropTypes.string,
   };
 
-  static contextTypes = {
-    antLocale: PropTypes.object,
-  };
+  context: SelectContext;
 
   render() {
     let {

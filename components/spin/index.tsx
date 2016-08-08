@@ -11,7 +11,7 @@ export interface SpinProps {
   prefixCls?: string;
   className?: string;
   spinning?: boolean;
-  size?: string;
+  size?: 'small' | 'default' | 'large';
   tip?: string;
 }
 
@@ -28,6 +28,8 @@ export default class Spin extends React.Component<SpinProps, any> {
     spinning: PropTypes.bool,
     size: PropTypes.oneOf(['small', 'default', 'large']),
   };
+
+  debounceTimeout: number;
 
   constructor(props) {
     super(props);
