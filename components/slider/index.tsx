@@ -1,10 +1,29 @@
 import * as React from 'react';
+import { PropTypes } from 'react';
 import RcSlider from 'rc-slider';
 import splitObject from '../_util/splitObject';
-export default class Slider extends React.Component {
+
+export interface SliderProps {
+  range?: boolean;
+  min?: number;
+  max?: number;
+  marks?: Object;
+  dots?: boolean;
+  included?: boolean;
+  disabled?: boolean;
+}
+
+export default class Slider extends React.Component<SliderProps, any> {
   static defaultProps = {
     prefixCls: 'ant-slider',
     tipTransitionName: 'zoom-down',
+  };
+
+  static propTypes = {
+    prefixCls: PropTypes.string,
+    tipTransitionName: PropTypes.string,
+    included: PropTypes.bool,
+    marks: PropTypes.object,
   };
 
   render() {

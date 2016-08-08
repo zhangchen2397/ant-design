@@ -1,25 +1,66 @@
 import * as React from 'react';
+import { PropTypes } from 'react';
 import RcSelect, { Option, OptGroup } from 'rc-select';
 import classNames from 'classnames';
 
-export default class Select extends React.Component {
+export interface SelectProps {
+  prefixCls?: string;
+  className?: string;
+  size?: string;
+  combobox?: boolean;
+  notFoundContent?: any;
+  showSearch?: boolean;
+  transitionName?: string;
+  choiceTransitionName?: string;
+  multiple?: boolean;
+  allowClear?: boolean;
+  tags?: boolean;
+  onSearch?: (value: string) => any;
+  placeholder?: string;
+  dropdownMatchSelectWidth?: boolean;
+  optionFilterProp?: string;
+  optionLabelProp?: string;
+  disabled?: boolean;
+  defaultActiveFirstOption?: boolean;
+  labelInValue?: boolean;
+}
+
+export default class Select extends React.Component<SelectProps, any> {
   static Option = Option;
   static OptGroup = OptGroup;
 
   static defaultProps = {
     prefixCls: 'ant-select',
+    showSearch: false,
     transitionName: 'slide-up',
     choiceTransitionName: 'zoom',
-    showSearch: false,
+  };
+
+  static propTypes = {
+    prefixCls: PropTypes.string,
+    className: PropTypes.string,
+    size: PropTypes.oneOf(['default', 'large', 'small']),
+    combobox: PropTypes.bool,
+    notFoundContent: PropTypes.any,
+    showSearch: PropTypes.bool,
+    optionLabelProp: PropTypes.string,
+    transitionName: PropTypes.string,
+    choiceTransitionName: PropTypes.string,
   };
 
   static contextTypes = {
-    antLocale: React.PropTypes.object,
+    antLocale: PropTypes.object,
   };
 
   render() {
     let {
-      size, className, combobox, notFoundContent, prefixCls, showSearch, optionLabelProp,
+      prefixCls,
+      className,
+      size,
+      combobox,
+      notFoundContent,
+      showSearch,
+      optionLabelProp,
     } = this.props;
 
     const cls = classNames({
